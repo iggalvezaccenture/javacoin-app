@@ -1,2 +1,2 @@
 # javacoin-app
-Java Microservices for trading Universal bank code digital currency.
+Java Message broker apps for trading Universal bank code digital currency.
