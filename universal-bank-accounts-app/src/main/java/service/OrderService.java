@@ -2,6 +2,8 @@ package service;
 
 import exception.AlreadyProcessedOrderException;
 import exception.NonAcceptedOrderException;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import model.BankAccount;
 import model.User;
 import model.transaction.Order;
@@ -9,12 +11,17 @@ import model.transaction.enums.Status;
 
 import java.util.Objects;
 
+@AllArgsConstructor
+@Builder
 public class OrderService {
+
+    private final UserService userService;
+    private final BankAccountService bankAccountService;
 
     public Order validateAndAcceptOrRejectOrder(Order order) throws AlreadyProcessedOrderException {
 
         validateIfOrderIsPending(order);
-        User user = UserService.findUser(order.getOffereeDNI());
+        User user = this.userService.findUser(order.getOffereeDNI());
         BankAccount bankAccount = user.getBankAccount();
         AcceptOrRejectOrder(order, bankAccount);
 
@@ -30,7 +37,7 @@ public class OrderService {
 
     public Order validateAndExecuteOrder(Order order) throws NonAcceptedOrderException {
         validateIfAcceptedOrder(order);
-        User user = UserService.findUser(order.getOffereeDNI());
+        User user = this.userService.findUser(order.getOffereeDNI());
         updateBankAccount(order, user);
         order.setStatus(Status.EXECUTED);
         return order;
@@ -43,8 +50,7 @@ public class OrderService {
     }
 
     private void updateBankAccount(Order order, User user) {
-        BankAccount bankAccount = user.getBankAccount();
-        bankAccount.setAmount(bankAccount.getAmount().add(order.getAmount()));
+        this.bankAccountService.deposit(user,order.getAmount());
     }
 
     private void AcceptOrRejectOrder(Order order, BankAccount bankAccount) {
@@ -55,5 +61,4 @@ public class OrderService {
             order.setStatus(Status.REJECTED);
         }
     }
-
 }

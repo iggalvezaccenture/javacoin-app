@@ -10,7 +10,7 @@ public class UserService {
     static  {
         USERS = new HashMap<>();
     }
-    public static User findUser(String dni) {
+    public  User findUser(String dni) {
         return USERS.get(dni);
     }
 }
