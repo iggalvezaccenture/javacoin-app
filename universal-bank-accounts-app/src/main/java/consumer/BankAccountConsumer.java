@@ -1,14 +1,11 @@
 package consumer;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
 import lombok.Builder;
 import model.BankAccount;
 import model.User;
 import model.transaction.Order;
 import model.transaction.enums.Status;
-import org.apache.activemq.artemis.api.core.Message;
 import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
-import service.BankAccountService;
 import service.UserService;
 
 import javax.jms.JMSConsumer;
