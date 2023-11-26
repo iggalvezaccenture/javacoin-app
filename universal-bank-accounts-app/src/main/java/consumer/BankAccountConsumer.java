@@ -34,7 +34,7 @@ public class BankAccountConsumer {
                 Order order = consumer.receiveBody(Order.class);
                 User user = UserService.findUserByUsername(order.getBidderUsername());
                 BankAccount bankAccount = user.getBankAccount();
-                if(bankAccount.getDeductions().subtract(order.getAmount().multiply(order.getPrice())).signum() < 0 ){
+                if (bankAccount.getDeductions().subtract(order.getAmount().multiply(order.getPrice())).signum() < 0) {
                     order.setStatus(Status.REJECTED);
                 } else {
                     bankAccount.setDeductions(bankAccount.getAmount().subtract(order.getAmount().multiply(order.getAmount())));
@@ -44,11 +44,11 @@ public class BankAccountConsumer {
         }
     }
 
-    public void start(){
+    public void start() {
         this.isActive = true;
     }
 
-    public void stop(){
+    public void stop() {
         this.isActive = false;
     }
 }
