@@ -16,7 +16,6 @@ public class Order  {
     private final BigDecimal amount;
     private final BigDecimal price;
     private final String bidderUsername;
-    private final String offereeDNI;
     private Status status;
 
 }

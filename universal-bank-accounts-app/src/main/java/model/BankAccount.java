@@ -15,4 +15,7 @@ public class BankAccount {
     private User user;
 
     private BigDecimal amount;
+
+    private BigDecimal deductions;
+
 }
