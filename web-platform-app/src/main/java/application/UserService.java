@@ -2,8 +2,8 @@ package application;
 
 import model.User;
 
-import java.math.BigDecimal;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserService {
     private static final Map<String, User> users;
@@ -32,8 +32,10 @@ public class UserService {
                 .build());
         users.put(AMALIA_2022, User.builder()
                 .username(UserService.AMALIA_2022)
+                        .build());
         users.put(JUAN_GOMEZ, User.builder()
                 .username(JUAN_GOMEZ)
+                .build());
         users.put(JACINTO, User.builder()
                 .username(UserService.JACINTO)
                 .build());
