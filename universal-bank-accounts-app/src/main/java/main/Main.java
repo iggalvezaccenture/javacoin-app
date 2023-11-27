@@ -10,8 +10,10 @@ public class Main {
 
 
         OrderConsumer orderConsumer = new OrderConsumer();
-        orderConsumer.consume();
-        orderConsumer.consume();
+
+        while(true){
+            orderConsumer.consume();
+        }
 
 
     }
