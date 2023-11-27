@@ -1,21 +1,16 @@
 package model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 
 @Data
+@Builder
 public class BankAccount {
 
-    private UUID accountId;
-
-    private String number;
-
-    private User user;
+    private Long number;
 
     private BigDecimal amount;
-
-    private BigDecimal deductions;
 
 }

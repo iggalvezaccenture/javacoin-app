@@ -1,21 +1,17 @@
-package model.transaction;
+package model;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-import lombok.experimental.SuperBuilder;
-import model.transaction.enums.Status;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
-@AllArgsConstructor
-@SuperBuilder
+@Builder
 public class Order  {
     private final UUID orderUUID;
     private final BigDecimal amount;
     private final BigDecimal price;
     private final String bidderUsername;
-    private Status status;
-
+    private final String offereeUsername;
 }

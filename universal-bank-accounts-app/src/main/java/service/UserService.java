@@ -1,11 +1,10 @@
 package service;
 
+import model.BankAccount;
 import model.User;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.util.*;
 
 public class UserService {
     private static final Map<String, User> users;
@@ -27,19 +26,63 @@ public class UserService {
     static {
         users = new HashMap<>();
         users.put(FLORENCIA, User.builder()
-                .username(FLORENCIA).build());
-        users.put(ALBERTO_2023, User.builder().username(ALBERTO_2023).build());
+                .username(FLORENCIA)
+                .operationsCount(0)
+                .bankAccount(BankAccount.builder()
+                        .amount(BigDecimal.valueOf(1000)
+                        )
+                        .number(1234567L)
+                        .build())
+                .build());
+        users.put(ALBERTO_2023, User.builder()
+                .username(ALBERTO_2023)
+                .operationsCount(0)
+                .bankAccount(BankAccount.builder()
+                        .amount(BigDecimal.valueOf(100000)
+                        )
+                        .number(12333567L)
+                        .build())
+                .build());
         users.put(AMALIA_2022, User.builder()
-                .username(UserService.AMALIA_2022).build());
-        users.put(JUAN_GOMEZ, User.builder().username(JUAN_GOMEZ).build());
+                .username(UserService.AMALIA_2022)
+                .operationsCount(0)
+                .bankAccount(BankAccount.builder()
+                        .amount(BigDecimal.valueOf(1000000)
+                        )
+                        .number(234234567L)
+                        .build())
+                .build());
+        users.put(JUAN_GOMEZ, User.builder()
+                .username(JUAN_GOMEZ)
+                .operationsCount(0)
+                .bankAccount(BankAccount.builder()
+                        .amount(BigDecimal.valueOf(100)
+                        )
+                        .number(1111234567L)
+                        .build())
+                .build());
         users.put(JACINTO, User.builder()
-                .username(UserService.JACINTO).build());
+                .username(UserService.JACINTO)
+                .operationsCount(0)
+                .bankAccount(BankAccount.builder()
+                        .amount(BigDecimal.valueOf(10)
+                        )
+                        .number(12345633337L)
+                        .build())
+                .build());
         users.put(MARIA, User.builder()
-                .username(MARIA).build());
+                .username(MARIA)
+                .operationsCount(0)
+                .bankAccount(BankAccount.builder()
+                        .amount(BigDecimal.valueOf(230000)
+                        )
+                        .number(2222234567L)
+                        .build())
+                .build());
 
     }
 
-    public static User findUserByUsername(String username){
+    public static User findUserByUsername(String username) {
         return users.get(username);
     }
 }

@@ -17,4 +17,6 @@ public class User {
 
     private BankAccount bankAccount;
 
+    private Integer operationsCount;
+
 }
